@@ -16,4 +16,4 @@ Ubuntu
 * $ sudo apt update 
 * $ sudo apt install frc-toolchain
 * Download this http://first.wpi.edu/FRC/roborio/zipfile/
-* unzip it
+* unzip it, password: R3C3CL3RU$H2015
