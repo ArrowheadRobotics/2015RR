@@ -21,7 +21,8 @@ Drive::Drive() {
 
 // Called just before this Command runs the first time
 void Drive::Initialize() {
-	
+	// Call move function
+	Robot::chassis->Move(Robot::oi->getleftJoy(),Robot::oi->getrightJoy());
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -31,7 +32,7 @@ void Drive::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool Drive::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
