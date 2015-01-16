@@ -26,21 +26,26 @@ void ContainerUp::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ContainerUp::Execute() {
-	
+	RobotMap::containerElevatorclawElevator->Set(0.25);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ContainerUp::IsFinished() {
-	return false;
+	if(RobotMap::containerElevatorelevateEn->Get()<RobotMap::containerElevatorlimitTop->Get()) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 
 // Called once after isFinished returns true
 void ContainerUp::End() {
-	
+	RobotMap::containerElevatorclawElevator->Set(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ContainerUp::Interrupted() {
-
+	RobotMap::containerElevatorclawElevator->Set(0);
 }

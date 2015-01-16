@@ -10,6 +10,7 @@
 
 
 #include "ContainerDown.h"
+#include "../RobotMap.h"
 
 ContainerDown::ContainerDown() {
 	// Use requires() here to declare subsystem dependencies
@@ -26,21 +27,26 @@ void ContainerDown::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void ContainerDown::Execute() {
-	
+	RobotMap::containerElevatorclawElevator->Set(-0.25);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ContainerDown::IsFinished() {
-	return false;
+	if(RobotMap::containerElevatorelevateEn->Get()>RobotMap::containerElevatorlimitBottom->Get()) {
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 
 // Called once after isFinished returns true
 void ContainerDown::End() {
-	
+	RobotMap::containerElevatorclawElevator->Set(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ContainerDown::Interrupted() {
-
+	RobotMap::containerElevatorclawElevator->Set(0);
 }

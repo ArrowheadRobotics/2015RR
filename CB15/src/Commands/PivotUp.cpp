@@ -10,6 +10,7 @@
 
 
 #include "PivotUp.h"
+#include "../RobotMap.h"
 
 PivotUp::PivotUp() {
 	// Use requires() here to declare subsystem dependencies
@@ -26,21 +27,26 @@ void PivotUp::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PivotUp::Execute() {
-	
+	RobotMap::containerElevatorclawPivot->Set(0.25);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PivotUp::IsFinished() {
-	return false;
+	if(RobotMap::containerElevatorpivotPot->GetValue()<500) { //TODO Set actual upper limit
+		return false;
+	}
+	else {
+		return true;
+	}
 }
 
 // Called once after isFinished returns true
 void PivotUp::End() {
-	
+	RobotMap::containerElevatorclawPivot->Set(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void PivotUp::Interrupted() {
-
+	RobotMap::containerElevatorclawPivot->Set(0);
 }
