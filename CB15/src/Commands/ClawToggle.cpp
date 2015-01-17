@@ -21,6 +21,7 @@ ClawToggle::ClawToggle() {
 
 // Called just before this Command runs the first time
 void ClawToggle::Initialize() {
+	//Swap the solenoid values to open/close the claw
 	RobotMap::containerElevatorclawSol1->Set(!RobotMap::containerElevatorclawSol1->Get());
 	RobotMap::containerElevatorclawSol2->Set(!RobotMap::containerElevatorclawSol2->Get());
 }

@@ -11,6 +11,7 @@
 
 #include "PivotDown.h"
 #include "../RobotMap.h"
+#include "../Constants.h"
 
 PivotDown::PivotDown() {
 	// Use requires() here to declare subsystem dependencies
@@ -32,7 +33,7 @@ void PivotDown::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool PivotDown::IsFinished() {
-	if(RobotMap::containerElevatorpivotPot->GetValue()>0) { //TODO Set actual lower limit
+	if(RobotMap::containerElevatorpivotPot->GetValue()>PIVOT_LOW_LIMIT) { //TODO Set actual lower limit
 		return false;
 	}
 	else {

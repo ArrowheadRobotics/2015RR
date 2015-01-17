@@ -11,6 +11,7 @@
 
 #include "PivotUp.h"
 #include "../RobotMap.h"
+#include "../Constants.h"
 
 PivotUp::PivotUp() {
 	// Use requires() here to declare subsystem dependencies
@@ -32,7 +33,7 @@ void PivotUp::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool PivotUp::IsFinished() {
-	if(RobotMap::containerElevatorpivotPot->GetValue()<500) { //TODO Set actual upper limit
+	if(RobotMap::containerElevatorpivotPot->GetValue()<PIVOT_HIGH_LIMIT) { //TODO Set actual upper limit
 		return false;
 	}
 	else {
