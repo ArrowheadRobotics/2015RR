@@ -1,16 +1,60 @@
 import rr
 import math
 
-def getDist(pOne, pTwo):
+def getDist(px):
 	try:
-		return (math.sqrt((pOne - pTwo)**2))/32
-	except EnvironmentError:
+		return (2548/px)
+	except ZeroDivisionError:
 		return
 
-def setGetDist():
+def setGetDistance():
 	try:
-		return rr.SetVariable("DISTANCE", getDist(getCoorY(0),getCoorY(3)))
+		return rr.SetVariable("DISTANCE", getDist(findDiff(getCoorY(1), getCoorY(7))))
+	except SystemError:
+		return
+		
+def findDiff(x, y):
+	try:
+		return abs(x-y)
+	except TypeError:
+		return
+
+def findAngle(x,y):
+	try:
+		x = float(x)
+		y = float(y)
+		print float(x/y)
+		return float(x/y)
+	except ZeroDivisionError:
+		return
+	except TypeError:
+		return
+		
+def setAngle():
+	try:
+		print findDiff(getCoorX(0), getCoorX(2))
+		print findDiff(getCoorX(10), getCoorX(8))
+		return rr.SetVariable("ANGLE", findAngle(findDiff(getCoorX(0),getCoorX(2)), findDiff(getCoorX(10), getCoorX(8))))
+	except SystemError:
+		print SystemError
+		return
+
+def setGetDistLeft():
+	try:
+		return rr.SetVariable("DISTANCE_LEFT", findDiff(getCoorY(1),getCoorY(7)))
 	except EnvironmentError:
+		return
+		
+def setGetDistRight():
+	try:
+		return rr.SetVariable("DISTANCE_RIGHT", findDiff(getCoorY(11), getCoorY(13)))
+	except:
+		return
+		
+def getCoorX(x):
+	try:
+		return rr.GetArrayVariable("MEP_COORDINATES")[x]
+	except IndexError:
 		return
 		
 def getCoorY(y):
@@ -81,16 +125,16 @@ def setTerms():
 	except SyntaxError:
 		return
 
-
-setTerms()
-
 if len(rr.GetArrayVariable("MEP_COORDINATES")):
-	setGetDist()
+	setTerms()
+	setAngle()
+	setGetDistance()
+	setGetDistLeft()
+	setGetDistRight()
 	setCoorLeftOne()
 	setCoorLeftTwo()
 	setCoorLeftThree()
 	setCoorLeftFour()
-
 	setCoorRightOne()
 	setCoorRightTwo()
 	setCoorRightThree()
