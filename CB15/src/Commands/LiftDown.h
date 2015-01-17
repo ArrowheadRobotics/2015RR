@@ -30,7 +30,7 @@ public:
 	virtual void End();
 	virtual void Interrupted();
 private:
-	int initEn;
+	int initPot;
 };
 
 #endif
