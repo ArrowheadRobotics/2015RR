@@ -42,6 +42,10 @@ void Chassis::InitDefaultCommand() {
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 
-
+void Chassis::Move(Joystick* leftJoy, Joystick* rightJoy) {
+	Robot::chassis->leftDrive->Set(1*leftJoy->GetY()*leftJoy->GetY()*leftJoy->GetY());
+	Robot::chassis->rightDrive->Set(-1*rightJoy->GetY()*rightJoy->GetY()*rightJoy->GetY());
+	Robot::chassis->sideDrive->Set(1*leftJoy->GetX()*leftJoy->GetX()*leftJoy->GetX());
+}
 
 
