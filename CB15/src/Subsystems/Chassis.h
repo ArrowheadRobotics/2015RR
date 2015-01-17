@@ -37,6 +37,7 @@ public:
 	Chassis();
 	void InitDefaultCommand();
 	void Move(Joystick *leftJoy, Joystick *rightJoy);
+
 };
 
 #endif
