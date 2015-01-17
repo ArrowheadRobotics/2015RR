@@ -11,7 +11,7 @@ def setGetDistance(): # Create variable named "DISTANCE" for roborealm
 	try:
 		return rr.SetVariable("DISTANCE", getDist(findDiff(getCoorY(1), getCoorY(7))))
 	except SystemError: # catch if one of the functions returns None
-		return
+		return 
 		
 def findDiff(x, y): # Find the length or height of a blob
 	try:

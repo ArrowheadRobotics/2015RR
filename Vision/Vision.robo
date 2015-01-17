@@ -1,0 +1,213 @@
+<head><version>2.69.13</version></head>
+<Axis_Internet_Camera>
+  <auto_back_light>TRUE</auto_back_light>
+  <auto_exposure>FALSE</auto_exposure>
+  <auto_white_balance>TRUE</auto_white_balance>
+  <brightness_value>50</brightness_value>
+  <camera_type>1</camera_type>
+  <color_level_value>50</color_level_value>
+  <compression_index>5</compression_index>
+  <contrast_value>50</contrast_value>
+  <exposure_value>50</exposure_value>
+  <ip_address>10.7.6.11</ip_address>
+  <is_active>TRUE</is_active>
+  <mirrot>FALSE</mirrot>
+  <port>80</port>
+  <resolution>480x360</resolution>
+  <sharpness_value>50</sharpness_value>
+</Axis_Internet_Camera>
+<RGB_Filter>
+  <channel>1</channel>
+  <hue_value>50</hue_value>
+  <hysteresis>56</hysteresis>
+  <min_value>225</min_value>
+</RGB_Filter>
+<Blob_Size>
+  <limit>2</limit>
+  <mask>FALSE</mask>
+  <max_area>0</max_area>
+  <min_area>0</min_area>
+  <threshold>5</threshold>
+  <treat_as_color_image>FALSE</treat_as_color_image>
+</Blob_Size>
+<Blob_Replace>
+  <color_index>6</color_index>
+  <fill_shape>TRUE</fill_shape>
+  <order_array_on_x>FALSE</order_array_on_x>
+  <order_array_on_y>FALSE</order_array_on_y>
+  <overlay_image>Source</overlay_image>
+  <shape_index>13</shape_index>
+  <thickness>1</thickness>
+</Blob_Replace>
+<Python_Program_v2x>
+  <auto_reload>TRUE</auto_reload>
+  <script>import rr
+import math
+
+def getDist(px):
+	try:
+		return (2548/px)
+	except ZeroDivisionError:
+		return
+
+def setGetDistance():
+	try:
+		return rr.SetVariable("DISTANCE", getDist(findDiff(getCoorY(1), getCoorY(7))))
+	except SystemError:
+		return
+		
+def findDiff(x, y):
+	try:
+		return abs(x-y)
+	except TypeError:
+		return
+
+def findAngle(x,y):
+	try:
+		x = float(x)
+		y = float(y)
+		print float(x/y)
+		return float(x/y)
+	except ZeroDivisionError:
+		return
+	except TypeError:
+		return
+		
+def setAngle():
+	try:
+		print findDiff(getCoorX(0), getCoorX(2))
+		print findDiff(getCoorX(10), getCoorX(8))
+		return rr.SetVariable("ANGLE", findAngle(findDiff(getCoorX(0),getCoorX(2)), findDiff(getCoorX(10), getCoorX(8))))
+	except SystemError:
+		print SystemError
+		return
+
+def setGetDistLeft():
+	try:
+		return rr.SetVariable("DISTANCE_LEFT", findDiff(getCoorY(1),getCoorY(7)))
+	except EnvironmentError:
+		return
+		
+def setGetDistRight():
+	try:
+		return rr.SetVariable("DISTANCE_RIGHT", findDiff(getCoorY(11), getCoorY(13)))
+	except:
+		return
+		
+def getCoorX(x):
+	try:
+		return rr.GetArrayVariable("MEP_COORDINATES")[x]
+	except IndexError:
+		return
+		
+def getCoorY(y):
+	try:
+		return rr.GetArrayVariable("MEP_COORDINATES")[y]
+	except IndexError:
+		return
+		
+def getCoor(x, y):
+	try:
+		xTerm = rr.GetArrayVariable("MEP_COORDINATES")[x]
+		yTerm = rr.GetArrayVariable("MEP_COORDINATES")[y];
+		return "(" + str(xTerm) + " , " + str(yTerm) + ")"
+	except IndexError:
+		return
+
+def setCoorLeftOne():
+	try:
+		return rr.SetVariable("COOR_LEFT_ONE", getCoor(0,1))
+	except SystemError:
+		return
+	
+def setCoorLeftTwo():
+	try:
+		return rr.SetVariable("COOR_LEFT_TWO", getCoor(2,3))
+	except SystemError:
+		return
+
+def setCoorLeftThree():
+	try:
+		return rr.SetVariable("COOR_LEFT_THREE", getCoor(4,5))
+	except SystemError:
+		return
+		
+def setCoorLeftFour():
+	try:
+		return rr.SetVariable("COOR_LEFT_FOUR", getCoor(6,7))
+	except SystemError:
+		return
+		
+def setCoorRightOne():
+	try:
+		return rr.SetVariable ("COOR_RIGHT_ONE", getCoor(8,9))
+	except SystemError:
+		return
+
+def setCoorRightTwo():
+	try:
+		return rr.SetVariable ("COOR_RIGHT_TWO", getCoor(10,11))
+	except SystemError:
+		return
+		
+def setCoorRightThree():
+	try:
+		return rr.SetVariable ("COOR_RIGHT_THREE", getCoor(12,13))
+	except SystemError:
+		return
+		
+def setCoorRightFour():
+	try:
+		return rr.SetVariable ("COOR_RIGHT_FOUR", getCoor(14,15))
+	except SystemError:
+		return
+		
+def setTerms():
+	try:
+		return rr.SetVariable("TERMS", len(rr.GetArrayVariable("MEP_COORDINATES")))
+	except SyntaxError:
+		return
+
+if len(rr.GetArrayVariable("MEP_COORDINATES")):
+	setTerms()
+	setAngle()
+	setGetDistance()
+	setGetDistLeft()
+	setGetDistRight()
+	setCoorLeftOne()
+	setCoorLeftTwo()
+	setCoorLeftThree()
+	setCoorLeftFour()
+	setCoorRightOne()
+	setCoorRightTwo()
+	setCoorRightThree()
+	setCoorRightFour()</script>
+  <source_mode>gui</source_mode>
+  <tab_size_index>1</tab_size_index>
+</Python_Program_v2x>
+<NetworkTables>
+  <delay>100</delay>
+  <filter_type_index>0</filter_type_index>
+  <hostname>roboRIO-706.local</hostname>
+  <port>1735</port>
+  <prefix>/SmartDashboard/</prefix>
+  <variables_to_send>ANGLE
+DISTANCE</variables_to_send>
+  <variable_type_index>0</variable_type_index>
+</NetworkTables>
+<Display_Variables>
+  <border_color>purple</border_color>
+  <dim_background>TRUE</dim_background>
+  <display_as_annotation>FALSE</display_as_annotation>
+  <display_value_only>TRUE</display_value_only>
+  <east>DISTANCE_RIGHT
+</east>
+  <font_color>purple</font_color>
+  <font_size>Large (12pt)</font_size>
+  <north>DISTANCE
+</north>
+  <south>ANGLE
+</south>
+  <west>DISTANCE_LEFT
+</west>
+</Display_Variables>
