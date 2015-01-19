@@ -140,4 +140,6 @@ def main():
 		setCoorRightTwo() #^
 		setCoorRightThree() #^
 		setCoorRightFour() #^
+		
+main()
 
