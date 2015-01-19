@@ -5,12 +5,6 @@ def getDist(px): # Get distance from camera to container
 	try:
 		return (2548/px)
 	except ZeroDivisionError: # catch if px is 0
-		return
-
-def setGetDistance(): # Create variable named "DISTANCE" for roborealm
-	try:
-		return rr.SetVariable("DISTANCE", getDist(findDiff(getCoorY(1), getCoorY(7))))
-	except SystemError: # catch if one of the functions returns None
 		return 
 		
 def findDiff(x, y): # Find the length or height of a blob
@@ -27,24 +21,6 @@ def findAngle(x,y): # Figure out if container is tilted
 	except ZeroDivisionError: # catch if y is 0
 		return
 	except TypeError: # catch if x and y are different data types
-		return
-		
-def setAngle(): # Create "ANGLE" variable for roborealm
-	try:
-		return rr.SetVariable("ANGLE", findAngle(findDiff(getCoorX(0),getCoorX(2)), findDiff(getCoorX(10), getCoorX(8))))
-	except SystemError: # catch any errors
-		return
-
-def setGetDistLeft(): # Set "DISTANCE_LEFT" variable for roborealm
-	try:
-		return rr.SetVariable("DISTANCE_LEFT", findDiff(getCoorY(1),getCoorY(7)))
-	except EnvironmentError: # catch any errors
-		return
-		
-def setGetDistRight(): # Set "DISTANCE_RIGHT" variable for roborealm
-	try:
-		return rr.SetVariable("DISTANCE_RIGHT", findDiff(getCoorY(11), getCoorY(13)))
-	except EnvironmentError: # catch any errors
 		return
 		
 def getCoorX(x): # Get the x value from the array
@@ -64,7 +40,35 @@ def getCoor(x, y): # Get coordinates of a point
 		xTerm = rr.GetArrayVariable("MEP_COORDINATES")[x]
 		yTerm = rr.GetArrayVariable("MEP_COORDINATES")[y];
 		return "(" + str(xTerm) + " , " + str(yTerm) + ")"
-	except IndexError: # catch if x or y is greater than array lenght
+	except IndexError: # catch if x or y is greater than array length
+		return
+		
+#############################################################################
+# ***********EVERYTHING BELOW (EXCLUDING main()) IS FOR ROBOREALM***********#
+#############################################################################
+		
+def setGetDistance(): # Create variable named "DISTANCE" for roborealm
+	try:
+		return rr.SetVariable("DISTANCE", getDist(findDiff(getCoorY(1), getCoorY(7))))
+	except SystemError: # catch if one of the functions returns None
+		return
+		
+def setAngle(): # Create "ANGLE" variable for roborealm
+	try:
+		return rr.SetVariable("ANGLE", findAngle(findDiff(getCoorX(0),getCoorX(2)), findDiff(getCoorX(10), getCoorX(8))))
+	except SystemError: # catch any errors
+		return
+
+def setGetDistLeft(): # Set "DISTANCE_LEFT" variable for roborealm
+	try:
+		return rr.SetVariable("DISTANCE_LEFT", findDiff(getCoorY(1),getCoorY(7)))
+	except EnvironmentError: # catch any errors
+		return
+		
+def setGetDistRight(): # Set "DISTANCE_RIGHT" variable for roborealm
+	try:
+		return rr.SetVariable("DISTANCE_RIGHT", findDiff(getCoorY(11), getCoorY(13)))
+	except EnvironmentError: # catch any errors
 		return
 
 def setCoorLeftOne(): # Set "COOR_LEFT_ONE" variable for roborealm
@@ -121,17 +125,19 @@ def setTerms(): # Create "TERMS" variable for roborealm
 	except SyntaxError: # catch any errors
 		return
 
-if len(rr.GetArrayVariable("MEP_COORDINATES")) == 16: # if only two blobs are on the screen
-	setTerms() # Set all variables
-	setAngle() #^
-	setGetDistance() #^
-	setGetDistLeft() #^
-	setGetDistRight() #^
-	setCoorLeftOne() #^
-	setCoorLeftTwo() #^
-	setCoorLeftThree() #^
-	setCoorLeftFour() #^
-	setCoorRightOne() #^
-	setCoorRightTwo() #^
-	setCoorRightThree() #^
-	setCoorRightFour() #^
+def main():
+	if len(rr.GetArrayVariable("MEP_COORDINATES")) == 16: # if only two blobs are on the screen
+		setTerms() # Set all variables
+		setAngle() #^
+		setGetDistance() #^
+		setGetDistLeft() #^
+		setGetDistRight() #^
+		setCoorLeftOne() #^
+		setCoorLeftTwo() #^
+		setCoorLeftThree() #^
+		setCoorLeftFour() #^
+		setCoorRightOne() #^
+		setCoorRightTwo() #^
+		setCoorRightThree() #^
+		setCoorRightFour() #^
+
