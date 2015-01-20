@@ -38,6 +38,23 @@ public:
 	void InitDefaultCommand();
 	void Move(Joystick *leftJoy, Joystick *rightJoy);
 
+	float yPosLeft;
+	float yStepLeft;
+
+	float yPosRight;
+	float yStepRight;
+
+	float xPos;
+	float xStep;
+
+	float accelval;
+
+	float stoppedRight;
+	float stoppedLeft;
+	float stoppedSide;
+
+	Timer t; //Creates new timer t
+
 };
 
 #endif
