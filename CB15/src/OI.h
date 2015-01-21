@@ -39,6 +39,7 @@ public:
 	JoystickButton* conDownBtn;
 	JoystickButton* pivotUpBtn;
 	JoystickButton* pivotDownBtn;
+	JoystickButton* setpointBtn;
 };
 
 #endif
