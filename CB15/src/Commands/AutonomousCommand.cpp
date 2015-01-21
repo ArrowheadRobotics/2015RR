@@ -12,6 +12,7 @@
 #include "AutonomousCommand.h"
 
 
+
 AutonomousCommand::AutonomousCommand() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -26,8 +27,6 @@ AutonomousCommand::AutonomousCommand() {
 
 // Called just before this Command runs the first time
 void AutonomousCommand::Initialize() {
-	a.Start();
-	a.Reset();
 	centerdistance=0;
 	startonleft=false;
 	counter=0;
@@ -51,21 +50,20 @@ void AutonomousCommand::GoBackward() {
 	Robot::chassis->rightDrive->Set(1);
 	counter++;
 	if(startonleft==true) {
+		Robot::chassis->sideEn->Reset();
 		StrafeRight();
-		a.Reset();
-	}else {
+	}else{
+		Robot::chassis->sideEn->Reset();
 		StrafeLeft();
-		a.Reset();
 	}
 }
 
 void AutonomousCommand::StrafeLeft() {
 	if(counter<4) {
 		Robot::chassis->sideDrive->Set(1);
-		if(a.Get()>500) {
+		if(Robot::chassis->sideEn->Get()>500||Robot::chassis->sideEn->Get()<-500) {
 			Robot::chassis->sideDrive->Set(0);
 			Center();
-			a.Reset();
 		} else {
 			StrafeLeft();
 		}
@@ -76,10 +74,9 @@ void AutonomousCommand::StrafeLeft() {
 void AutonomousCommand::StrafeRight() {
 	if(counter<4) {
 		Robot::chassis->sideDrive->Set(-1);
-		if(a.Get()>500) {
+		if(Robot::chassis->sideEn->Get()>500||Robot::chassis->sideEn->Get()<-500) {
 			Robot::chassis->sideDrive->Set(0);
 			Center();
-			a.Reset();
 		} else {
 			StrafeRight();
 		}

@@ -37,8 +37,6 @@ public:
 	float centerdistance;
 	bool startonleft;
 	int counter;
-
-	Timer a;
 };
 
 #endif
