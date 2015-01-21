@@ -33,6 +33,11 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	yPosRight = 0;
 	xPos = 0;
 
+	yStepLeft=0;
+	yStepRight=0;
+	xStep=0;
+
+
 	stoppedRight = 0;
 	stoppedLeft = 0;
 	stoppedSide = 0;
@@ -41,6 +46,7 @@ Chassis::Chassis() : Subsystem("Chassis") {
 
 	t.Start(); //Start Timer t
 	t.Reset(); //Set timer t to 0
+
 }
 
     

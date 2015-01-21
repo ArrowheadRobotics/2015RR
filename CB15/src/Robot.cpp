@@ -54,7 +54,6 @@ void Robot::DisabledInit(){
 }
 
 void Robot::DisabledPeriodic() {
-	printf("Distance = %f\n",Robot::table->GetNumber("Distance",0));
 	Scheduler::GetInstance()->Run();
 }
 
@@ -78,6 +77,9 @@ void Robot::TeleopInit() {
 
 void Robot::TeleopPeriodic() {
 	Scheduler::GetInstance()->Run();
+	printf("Distance = %f\n",Robot::table->GetNumber("Distance",0));
+	printf("Angle = %f\n" , Robot::table->GetNumber("Angle",0));
+	printf("Midpoint = %f\n", Robot::table->GetNumber("Midpoint",0));
 }
 
 void Robot::TestPeriodic() {
