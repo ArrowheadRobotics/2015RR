@@ -10,7 +10,7 @@
 #define ABUTTON 0 //Set to ClawToggle
 #define BBUTTON 1 //Set to PivotDown
 #define XBUTTON 2 //Set to PivotUp
-#define YBUTTON 3
+#define YBUTTON 3 //Set to SetpointReset
 #define STARTBUTTON 7
 #define BACKBUTTON 6
 #define LEFTXAXIS 0 //X axis on left stick

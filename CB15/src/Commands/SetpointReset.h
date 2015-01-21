@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef LIFTUP_H
-#define LIFTUP_H
+#ifndef SetpointReset_H
+#define SetpointReset_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,16 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class LiftUp: public Command {
+class SetpointReset: public Command {
 public:
-	LiftUp();
+	SetpointReset();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-//private:
-//	int initPot;
 };
 
 #endif
