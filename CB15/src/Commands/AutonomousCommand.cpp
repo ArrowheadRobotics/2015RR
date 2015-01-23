@@ -22,7 +22,6 @@ AutonomousCommand::AutonomousCommand() {
 	counter = 0;
 	centerdistance=0;
 	startonleft=false;
-
 }
 
 // Called just before this Command runs the first time
@@ -37,7 +36,7 @@ void AutonomousCommand::Execute() {
 	centerdistance=	Robot::table->GetNumber("Midpoint",0);
 }
 
-void AutonomousCommand::GoForeward() {
+void AutonomousCommand::GoForward() {
 	Robot::chassis->leftDrive->Set(1);
 	Robot::chassis->rightDrive->Set(-1);
 
@@ -51,35 +50,47 @@ void AutonomousCommand::GoBackward() {
 	counter++;
 	if(startonleft==true) {
 		Robot::chassis->sideEn->Reset();
-		StrafeRight();
+		StrafeRight(500);
 	}else{
 		Robot::chassis->sideEn->Reset();
-		StrafeLeft();
+		StrafeLeft(500);
 	}
 }
 
-void AutonomousCommand::StrafeLeft() {
-	if(counter<4) {
-		Robot::chassis->sideDrive->Set(1);
-		if(Robot::chassis->sideEn->Get()>500||Robot::chassis->sideEn->Get()<-500) {
-			Robot::chassis->sideDrive->Set(0);
-			Center();
-		} else {
-			StrafeLeft();
-		}
+void AutonomousCommand::StrafeLeft(int strafeamount) {
+	Robot::chassis->sideDrive->Set(1);
+	if(Robot::chassis->sideEn->Get()>strafeamount||Robot::chassis->sideEn->Get()<-1*strafeamount) {
+		Robot::chassis->sideDrive->Set(0);
+		Angle();
 	}
-
 }
 
-void AutonomousCommand::StrafeRight() {
-	if(counter<4) {
-		Robot::chassis->sideDrive->Set(-1);
-		if(Robot::chassis->sideEn->Get()>500||Robot::chassis->sideEn->Get()<-500) {
-			Robot::chassis->sideDrive->Set(0);
-			Center();
-		} else {
-			StrafeRight();
-		}
+
+
+void AutonomousCommand::StrafeRight(int strafeamount) {
+	Robot::chassis->sideDrive->Set(-1);
+	if(Robot::chassis->sideEn->Get()>strafeamount||Robot::chassis->sideEn->Get()<-1*strafeamount) {
+		Robot::chassis->sideDrive->Set(0);
+		Angle();
+	}
+}
+
+
+void AutonomousCommand::Angle() {
+	if(Robot::table->GetNumber("Angle",0)>1.01) {
+		Robot::chassis->rightDrive->Set(1);
+		Robot::chassis->leftDrive->Set(-1);
+		Angle();
+		StrafeLeft(20);
+	}
+	if(Robot::table->GetNumber("Angle",0)<.99) {
+		Robot::chassis->rightDrive->Set(-1);
+		Robot::chassis->leftDrive->Set(1);
+		Angle();
+		StrafeRight(20);
+	}
+	if(Robot::table->GetNumber("Angle",0)>.99&&Robot::table->GetNumber("Angle",0)<1.01) {
+		Center();
 	}
 }
 
@@ -91,7 +102,7 @@ void AutonomousCommand::Center() {
 		Robot::chassis->sideDrive->Set(-1);
 	}
 	if(5>centerdistance&&centerdistance>-5) {
-		GoForeward();
+		GoForward();
 	} else {
 		Center();
 	}
