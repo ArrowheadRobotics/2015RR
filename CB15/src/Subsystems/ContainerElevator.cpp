@@ -22,7 +22,7 @@ ContainerElevator::ContainerElevator() : Subsystem("ContainerElevator") {
 	clawSol2 = RobotMap::containerElevatorclawSol2;
 	clawPivot = RobotMap::containerElevatorclawPivot;
 	clawElevator = RobotMap::containerElevatorclawElevator;
-//	limitTop = RobotMap::containerElevatorlimitTop;
+	limitTop = RobotMap::containerElevatorlimitTop;
 	limitBottom = RobotMap::containerElevatorlimitBottom;
 	pivotPot = RobotMap::containerElevatorpivotPot;
 	elevatePot = RobotMap::containerElevatorelevatePot;

@@ -78,10 +78,12 @@ OI::OI() {
 	conUpBtn->WhileHeld(new ContainerUp());
 	conDownBtn = new JoystickButton(gamePad, LEFTBUMPER);
 	conDownBtn->WhileHeld(new ContainerDown());
-	pivotUpBtn = new JoystickButton(gamePad, XBUTTON);
-	pivotUpBtn->WhenPressed(new PivotUp());
-	pivotDownBtn = new JoystickButton(gamePad, BBUTTON);
-	pivotDownBtn->WhenPressed(new PivotDown());
+	pivotTopBtn = new JoystickButton(gamePad, XBUTTON);
+	pivotTopBtn->WhenPressed(new PivotUp());
+	pivotBottomBtn = new JoystickButton(gamePad, BBUTTON);
+	pivotBottomBtn->WhenPressed(new PivotDown());
+	pivotNoodleBtn = new JoystickButton(gamePad, STARTBUTTON);
+	pivotNoodleBtn->WhenPressed(new PivotNoodle());
 	//Lift Elevator Button:
 	setpointBtn = new JoystickButton(gamePad, YBUTTON);
 	setpointBtn->WhenPressed(new SetpointReset());

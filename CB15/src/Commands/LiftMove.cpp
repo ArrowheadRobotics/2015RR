@@ -27,6 +27,10 @@ void LiftMove::Initialize() {
 // Called repeatedly when this Command is scheduled to run
 void LiftMove::Execute() {
 	Robot::toteElevator->PIDLiftControl();
+	if((Robot::toteElevator->limitBottomT->Get()&&Robot::toteElevator->output<0)||(Robot::toteElevator->limitTopT->Get()&&Robot::toteElevator->output>0)) {
+		Robot::toteElevator->output=0;
+		Robot::toteElevator->setpoint=Robot::toteElevator->totePot->GetValue();
+	}
 }
 
 // Make this return true when this Command no longer needs to run execute()
