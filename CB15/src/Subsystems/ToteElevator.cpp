@@ -33,6 +33,9 @@ ToteElevator::ToteElevator() : Subsystem("ToteElevator") {
 	tE.Reset();
 	lastT = 0;
 	output = 0;
+
+	limitTopT = RobotMap::toteElevatorlimitTop;
+	limitBottomT = RobotMap::toteElevatorlimitBottom;
 }
     
 void ToteElevator::InitDefaultCommand() {

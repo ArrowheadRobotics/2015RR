@@ -37,6 +37,8 @@ public:
 	Timer tE;
 	float lastT;
 	float output;
+	DigitalInput* limitTopT;
+	DigitalInput* limitBottomT;
 };
 
 #endif

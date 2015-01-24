@@ -29,7 +29,7 @@ public:
 	Solenoid* clawSol2;
 	SpeedController* clawPivot;
 	SpeedController* clawElevator;
-//	DigitalInput* limitTop;
+	DigitalInput* limitTop;
 	DigitalInput* limitBottom;
 	AnalogInput* pivotPot;
 	AnalogInput* elevatePot;

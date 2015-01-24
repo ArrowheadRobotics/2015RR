@@ -28,12 +28,12 @@ void PivotUp::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void PivotUp::Execute() {
-	RobotMap::containerElevatorclawPivot->Set(0.25);
+	Robot::containerElevator->clawPivot->Set(0.25);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PivotUp::IsFinished() {
-	if(RobotMap::containerElevatorpivotPot->GetValue()<PIVOT_HIGH_LIMIT) { //TODO Set actual upper limit
+	if(RobotMap::containerElevatorpivotPot->GetValue()<PIVOT_HIGH_LIMIT) {
 		return false;
 	}
 	else {
@@ -43,11 +43,11 @@ bool PivotUp::IsFinished() {
 
 // Called once after isFinished returns true
 void PivotUp::End() {
-	RobotMap::containerElevatorclawPivot->Set(0);
+	Robot::containerElevator->clawPivot->Set(0);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void PivotUp::Interrupted() {
-	RobotMap::containerElevatorclawPivot->Set(0);
+	Robot::containerElevator->clawPivot->Set(0);
 }

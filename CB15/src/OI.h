@@ -37,9 +37,10 @@ public:
 	JoystickButton* toteDownBtn;
 	JoystickButton* conUpBtn;
 	JoystickButton* conDownBtn;
-	JoystickButton* pivotUpBtn;
-	JoystickButton* pivotDownBtn;
+	JoystickButton* pivotTopBtn;
+	JoystickButton* pivotBottomBtn;
 	JoystickButton* setpointBtn;
+	JoystickButton* pivotNoodleBtn;
 };
 
 #endif
