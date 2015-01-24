@@ -29,16 +29,16 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	virtual void Center();
-	virtual void GoForeward();
-	virtual void GoBackward();
-	virtual void StrafeLeft();
-	virtual void StrafeRight();
+	void Center();
+	void GoForward();
+	void GoBackward();
+	void StrafeLeft(int strafeamount);
+	void StrafeRight(int strafeamount);
+	void Angle();
 	float centerdistance;
 	bool startonleft;
 	int counter;
 
-	Timer a;
 };
 
 #endif

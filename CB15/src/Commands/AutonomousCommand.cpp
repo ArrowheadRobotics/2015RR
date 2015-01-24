@@ -12,6 +12,7 @@
 #include "AutonomousCommand.h"
 
 
+
 AutonomousCommand::AutonomousCommand() {
 	// Use requires() here to declare subsystem dependencies
 	// eg. requires(chassis);
@@ -21,13 +22,10 @@ AutonomousCommand::AutonomousCommand() {
 	counter = 0;
 	centerdistance=0;
 	startonleft=false;
-
 }
 
 // Called just before this Command runs the first time
 void AutonomousCommand::Initialize() {
-	a.Start();
-	a.Reset();
 	centerdistance=0;
 	startonleft=false;
 	counter=0;
@@ -38,7 +36,7 @@ void AutonomousCommand::Execute() {
 	centerdistance=	Robot::table->GetNumber("Midpoint",0);
 }
 
-void AutonomousCommand::GoForeward() {
+void AutonomousCommand::GoForward() {
 	Robot::chassis->leftDrive->Set(1);
 	Robot::chassis->rightDrive->Set(-1);
 
@@ -51,38 +49,48 @@ void AutonomousCommand::GoBackward() {
 	Robot::chassis->rightDrive->Set(1);
 	counter++;
 	if(startonleft==true) {
-		StrafeRight();
-		a.Reset();
-	}else {
-		StrafeLeft();
-		a.Reset();
+		Robot::chassis->sideEn->Reset();
+		StrafeRight(500);
+	}else{
+		Robot::chassis->sideEn->Reset();
+		StrafeLeft(500);
 	}
 }
 
-void AutonomousCommand::StrafeLeft() {
-	if(counter<4) {
-		Robot::chassis->sideDrive->Set(1);
-		if(a.Get()>500) {
-			Robot::chassis->sideDrive->Set(0);
-			Center();
-			a.Reset();
-		} else {
-			StrafeLeft();
-		}
+void AutonomousCommand::StrafeLeft(int strafeamount) {
+	Robot::chassis->sideDrive->Set(1);
+	if(Robot::chassis->sideEn->Get()>strafeamount||Robot::chassis->sideEn->Get()<-1*strafeamount) {
+		Robot::chassis->sideDrive->Set(0);
+		Angle();
 	}
-
 }
 
-void AutonomousCommand::StrafeRight() {
-	if(counter<4) {
-		Robot::chassis->sideDrive->Set(-1);
-		if(a.Get()>500) {
-			Robot::chassis->sideDrive->Set(0);
-			Center();
-			a.Reset();
-		} else {
-			StrafeRight();
-		}
+
+
+void AutonomousCommand::StrafeRight(int strafeamount) {
+	Robot::chassis->sideDrive->Set(-1);
+	if(Robot::chassis->sideEn->Get()>strafeamount||Robot::chassis->sideEn->Get()<-1*strafeamount) {
+		Robot::chassis->sideDrive->Set(0);
+		Angle();
+	}
+}
+
+
+void AutonomousCommand::Angle() {
+	if(Robot::table->GetNumber("Angle",0)>1.01) {
+		Robot::chassis->rightDrive->Set(1);
+		Robot::chassis->leftDrive->Set(-1);
+		Angle();
+		StrafeLeft(20);
+	}
+	if(Robot::table->GetNumber("Angle",0)<.99) {
+		Robot::chassis->rightDrive->Set(-1);
+		Robot::chassis->leftDrive->Set(1);
+		Angle();
+		StrafeRight(20);
+	}
+	if(Robot::table->GetNumber("Angle",0)>.99&&Robot::table->GetNumber("Angle",0)<1.01) {
+		Center();
 	}
 }
 
@@ -94,7 +102,7 @@ void AutonomousCommand::Center() {
 		Robot::chassis->sideDrive->Set(-1);
 	}
 	if(5>centerdistance&&centerdistance>-5) {
-		GoForeward();
+		GoForward();
 	} else {
 		Center();
 	}
