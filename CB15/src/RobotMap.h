@@ -35,7 +35,7 @@ public:
 	static Solenoid* containerElevatorclawSol2;
 	static SpeedController* containerElevatorclawPivot;
 	static SpeedController* containerElevatorclawElevator;
-//	static DigitalInput* containerElevatorlimitTop;
+	static DigitalInput* containerElevatorlimitTop;
 	static DigitalInput* containerElevatorlimitBottom;
 	static AnalogInput* containerElevatorpivotPot;
 	static AnalogInput* containerElevatorelevatePot;
