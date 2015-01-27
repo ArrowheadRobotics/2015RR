@@ -7,21 +7,21 @@
 #define JOYMAP 0
 
 //xBox Controller
-#define ABUTTON 0 //Set to ClawToggle
-#define BBUTTON 1 //Set to PivotDown
-#define XBUTTON 2 //Set to PivotUp
-#define YBUTTON 3 //Set to SetpointReset
-#define STARTBUTTON 7
-#define BACKBUTTON 6
+#define ABUTTON 1 //Set to ClawToggle
+#define BBUTTON 2 //Set to PivotDown
+#define XBUTTON 3 //Set to PivotUp
+#define YBUTTON 4 //Set to SetpointReset
+#define STARTBUTTON 8
+#define BACKBUTTON 7
 #define LEFTXAXIS 0 //X axis on left stick
 #define LEFTYAXIS 1 //Y axis on left stick
 #define RIGHTXAXIS 4 //X axis on right stick
 #define RIGHTYAXIS 5 //Y axis on right stick
-#define LEFTTRIGGER 2 //Set to ContainerUp
-#define RIGHTTRIGGER 3 //Set to LiftUp
-#define LEFTBUMPER 4 //Set to ContainerDown
-#define RIGHTBUMPER 5 //Set to LiftDown
-#define LEFTSTICK 8 //press in left stick
-#define RIGHTSTICK 9 //press in right stick
+#define LEFTTRIGGER 3 //Set to ContainerUp
+#define RIGHTTRIGGER 4 //Set to LiftUp
+#define LEFTBUMPER 5 //Set to ContainerDown
+#define RIGHTBUMPER 6 //Set to LiftDown
+#define LEFTSTICK 9 //press in left stick
+#define RIGHTSTICK 10 //press in right stick
 
 #endif

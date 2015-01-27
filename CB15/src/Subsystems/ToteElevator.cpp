@@ -31,11 +31,10 @@ ToteElevator::ToteElevator() : Subsystem("ToteElevator") {
 	lastError = 0;
 	tE.Start();
 	tE.Reset();
-	lastT = 0;
 	output = 0;
 
-	limitTopT = RobotMap::toteElevatorlimitTop;
-	limitBottomT = RobotMap::toteElevatorlimitBottom;
+	limitTop = RobotMap::toteElevatorlimitTop;
+	limitBottom = RobotMap::toteElevatorlimitBottom;
 }
     
 void ToteElevator::InitDefaultCommand() {
@@ -51,12 +50,13 @@ void ToteElevator::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void ToteElevator::PIDLiftControl() {
-	while(tE.Get()<lastT+TOTE_ELEVATOR_DT) {}
-	error = setpoint-totePot->GetValue();
-	integral+=(error*TOTE_ELEVATOR_DT);
-	derivative = (error-lastError)/TOTE_ELEVATOR_DT;
-	output = (TOTE_ELEVATOR_KP*error)+(TOTE_ELEVATOR_KI*integral)+(TOTE_ELEVATOR_KD*derivative);
-	toteDrive->Set(output);
-	lastError = error;
-	lastT = tE.Get();
+	if(tE.Get()>TOTE_ELEVATOR_DT) {
+		error = setpoint-totePot->GetValue();
+		integral+=(error*TOTE_ELEVATOR_DT);
+		derivative = (error-lastError)/TOTE_ELEVATOR_DT;
+		output = (TOTE_ELEVATOR_KP*error)+(TOTE_ELEVATOR_KI*integral)+(TOTE_ELEVATOR_KD*derivative);
+		toteDrive->Set(output);
+		lastError = error;
+		tE.Reset();
+	}
 }

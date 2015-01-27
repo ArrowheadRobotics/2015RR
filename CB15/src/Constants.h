@@ -10,7 +10,7 @@
 #define TOTE_ELEVATOR_KP 0 //Proportional constant
 #define TOTE_ELEVATOR_KI 0 //Integral constant
 #define TOTE_ELEVATOR_KD 0 //Derivative constant
-#define TOTE_ELEVATOR_DT 10 //Change in time (milliseconds)
+#define TOTE_ELEVATOR_DT 50 //Change in time (milliseconds)
 #define DEFAULT_SETPOINT 50 //TODO Pick a value for this
 
 
@@ -42,8 +42,11 @@
 #define pClawPivot 2
 #define pContainerElevator 3
 
-#define pElevatorLimitTop 6
-#define pElevatorLimitBottom 7
+#define pContainerElevatorLimitTop 6
+#define pContainerElevatorLimitBottom 7
+
+#define pToteElevatorLimitTop 8
+#define pToteElevatorLimitBottom 9
 
 #define pElevatorPivotPot 1
 #define pElevatorHeightPot 2

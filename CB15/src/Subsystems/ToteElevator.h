@@ -35,10 +35,9 @@ public:
 	float lastError, setpoint;
 	float integral, error, derivative;
 	Timer tE;
-	float lastT;
 	float output;
-	DigitalInput* limitTopT;
-	DigitalInput* limitBottomT;
+	DigitalInput* limitTop;
+	DigitalInput* limitBottom;
 };
 
 #endif
