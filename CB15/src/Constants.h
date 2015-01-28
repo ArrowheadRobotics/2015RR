@@ -50,9 +50,11 @@
 
 #define pElevatorPivotPot 1
 #define pElevatorHeightPot 2
+//TODO Enter correct values for these constants
+#define pStrafeSolenoid1A 0
+#define pStrafeSolenoid1B 0
 
-
-
-
+#define pStrafeSolenoid2A 0
+#define pStrafeSolenoid2B 1
 
 #endif /* SRC_CONSTANTS_H_ */

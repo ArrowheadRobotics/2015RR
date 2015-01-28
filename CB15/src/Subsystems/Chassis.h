@@ -55,7 +55,8 @@ public:
 
 	Timer t; //Creates new timer t
 
-
+	Solenoid* strafeSol1;
+	Solenoid* strafeSol2;
 };
 
 #endif

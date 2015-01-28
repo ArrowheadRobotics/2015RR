@@ -47,6 +47,8 @@ Chassis::Chassis() : Subsystem("Chassis") {
 	t.Start(); //Start Timer t
 	t.Reset(); //Set timer t to 0
 
+	strafeSol1 = RobotMap::strafeAxisSol1;
+	strafeSol2 = RobotMap::strafeAxisSol2;
 }
 
     

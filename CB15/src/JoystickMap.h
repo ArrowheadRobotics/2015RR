@@ -11,7 +11,7 @@
 #define BBUTTON 2 //Set to PivotDown
 #define XBUTTON 3 //Set to PivotUp
 #define YBUTTON 4 //Set to SetpointReset
-#define STARTBUTTON 8
+#define STARTBUTTON 8 //Set to PivotNoodle
 #define BACKBUTTON 7
 #define LEFTXAXIS 0 //X axis on left stick
 #define LEFTYAXIS 1 //Y axis on left stick
