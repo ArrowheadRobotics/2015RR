@@ -22,7 +22,7 @@ SetpointReset::SetpointReset() {
 
 // Called just before this Command runs the first time
 void SetpointReset::Initialize() {
-	Robot::toteElevator->setpoint = DEFAULT_SETPOINT;
+	Robot::toteElevator->setpoint = kDEFAULT_SETPOINT;
 }
 
 // Called repeatedly when this Command is scheduled to run

@@ -37,6 +37,7 @@ public:
 	Chassis();
 	void InitDefaultCommand();
 	void Move(Joystick *leftJoy, Joystick *rightJoy);
+	void ToggleStrafe();
 
 	float yPosLeft;
 	float yStepLeft;
@@ -53,10 +54,10 @@ public:
 	float stoppedLeft;
 	float stoppedSide;
 
+	bool strafe;
 	Timer t; //Creates new timer t
 
-	Solenoid* strafeSol1;
-	Solenoid* strafeSol2;
+	DoubleSolenoid* strafeSol;
 };
 
 #endif

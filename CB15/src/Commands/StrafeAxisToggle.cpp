@@ -21,8 +21,7 @@ StrafeAxisToggle::StrafeAxisToggle() {
 
 // Called just before this Command runs the first time
 void StrafeAxisToggle::Initialize() {
-	Robot::chassis->strafeSol1->Set(!Robot::chassis->strafeSol1->Get());
-	Robot::chassis->strafeSol2->Set(!Robot::chassis->strafeSol2->Get());
+	Robot::chassis->ToggleStrafe();
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -32,7 +31,7 @@ void StrafeAxisToggle::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool StrafeAxisToggle::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true

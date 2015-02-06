@@ -50,11 +50,11 @@ void ToteElevator::InitDefaultCommand() {
 // here. Call these from Commands.
 
 void ToteElevator::PIDLiftControl() {
-	if(tE.Get()>TOTE_ELEVATOR_DT) {
+	if(tE.Get()>kTOTE_ELEVATOR_DT) {
 		error = setpoint-totePot->GetValue();
-		integral+=(error*TOTE_ELEVATOR_DT);
-		derivative = (error-lastError)/TOTE_ELEVATOR_DT;
-		output = (TOTE_ELEVATOR_KP*error)+(TOTE_ELEVATOR_KI*integral)+(TOTE_ELEVATOR_KD*derivative);
+		integral+=(error*kTOTE_ELEVATOR_DT);
+		derivative = (error-lastError)/kTOTE_ELEVATOR_DT;
+		output = (kTOTE_ELEVATOR_KP*error)+(kTOTE_ELEVATOR_KI*integral)+(kTOTE_ELEVATOR_KD*derivative);
 		toteDrive->Set(output);
 		lastError = error;
 		tE.Reset();

@@ -24,7 +24,7 @@ LiftUp::LiftUp() {
 // Called just before this Command runs the first time
 void LiftUp::Initialize() {
 //	initPot = RobotMap::toteElevatortotePot->GetValue(); //Store the initial pot value
-	Robot::toteElevator->setpoint+=POT_LIFT_DIFFERENCE;
+	Robot::toteElevator->setpoint+=kPOT_LIFT_DIFFERENCE;
 }
 
 // Called repeatedly when this Command is scheduled to run

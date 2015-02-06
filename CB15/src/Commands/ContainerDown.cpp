@@ -34,7 +34,7 @@ void ContainerDown::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ContainerDown::IsFinished() {
-	if(RobotMap::containerElevatorlimitBottom->Get()||initPot-RobotMap::containerElevatorelevatePot->GetValue()>POT_LIFT_DIFFERENCE) { //If the lift hits the bottom or has gone the length of a tote, stop
+	if(RobotMap::containerElevatorlimitBottom->Get()||initPot-RobotMap::containerElevatorelevatePot->GetValue()>kPOT_LIFT_DIFFERENCE) { //If the lift hits the bottom or has gone the length of a tote, stop
 		return true;
 	}
 	else {

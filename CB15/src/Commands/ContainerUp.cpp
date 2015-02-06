@@ -33,7 +33,7 @@ void ContainerUp::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ContainerUp::IsFinished() {
-	if(RobotMap::containerElevatorelevatePot->GetValue()-initPot>POT_LIFT_DIFFERENCE||RobotMap::containerElevatorlimitTop->Get()) { //If the lift has traveled the length of a tote, stop
+	if(RobotMap::containerElevatorelevatePot->GetValue()-initPot>kPOT_LIFT_DIFFERENCE||RobotMap::containerElevatorlimitTop->Get()) { //If the lift has traveled the length of a tote, stop
 		return true;
 	}
 	else {

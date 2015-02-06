@@ -23,21 +23,22 @@ PivotUp::PivotUp() {
 
 // Called just before this Command runs the first time
 void PivotUp::Initialize() {
-	
+	Robot::containerElevator->clawPivot->Set(-0.25);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void PivotUp::Execute() {
-	Robot::containerElevator->clawPivot->Set(0.25);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PivotUp::IsFinished() {
-	if(RobotMap::containerElevatorpivotPot->GetValue()<PIVOT_HIGH_LIMIT) {
-		return false;
-	}
-	else {
+	if(Robot::containerElevator->pivotPot->GetValue()<=kPIVOT_HIGH_LIMIT)
+	{
+		Robot::containerElevator->clawPivot->Set(0);
 		return true;
+	}else{
+		return false;
 	}
 }
 
