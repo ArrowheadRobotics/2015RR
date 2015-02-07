@@ -1,6 +1,12 @@
 import rr
 import math
 
+def getMidpoint(x, y):
+	try:
+		return (x + y)/2
+	except EnviornmentError:
+		return
+
 def getDist(px): # Get distance from camera to container
 	try:
 		return (2548/px)
@@ -46,6 +52,12 @@ def getCoor(x, y): # Get coordinates of a point
 #############################################################################
 # ***********EVERYTHING BELOW (EXCLUDING main()) IS FOR ROBOREALM***********#
 #############################################################################
+		
+def setMidpoint(): # Create variable name "MIDPOINT" for roborealm
+	try:
+		return rr.SetVariable("MIDPOINT",  (getMidpoint(getCoorX(0), getCoorX(10))) - 240)
+	except SystemError: # catch if function returns None
+		return
 		
 def setGetDistance(): # Create variable named "DISTANCE" for roborealm
 	try:
@@ -129,6 +141,7 @@ def main():
 	if len(rr.GetArrayVariable("MEP_COORDINATES")) == 16: # if only two blobs are on the screen
 		setTerms() # Set all variables
 		setAngle() #^
+		setMidpoint() #^
 		setGetDistance() #^
 		setGetDistLeft() #^
 		setGetDistRight() #^
