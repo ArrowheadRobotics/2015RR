@@ -9,8 +9,8 @@
 // it from being updated in the future.
 
 
-#ifndef AUTONOMOUS_COMMAND_H
-#define AUTONOMOUS_COMMAND_H
+#ifndef SetpointReset_H
+#define SetpointReset_H
 
 
 #include "Commands/Subsystem.h"
@@ -21,24 +21,14 @@
  *
  * @author ExampleAuthor
  */
-class AutonomousCommand: public Command {
+class SetpointReset: public Command {
 public:
-	AutonomousCommand();
+	SetpointReset();
 	virtual void Initialize();
 	virtual void Execute();
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	void Center();
-	void GoForward();
-	void GoBackward();
-	void StrafeLeft(int strafeamount);
-	void StrafeRight(int strafeamount);
-	void Angle();
-	float centerdistance;
-	bool startonleft;
-	int counter;
-
 };
 
 #endif

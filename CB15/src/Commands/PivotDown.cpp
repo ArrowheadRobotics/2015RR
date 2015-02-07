@@ -23,21 +23,22 @@ PivotDown::PivotDown() {
 
 // Called just before this Command runs the first time
 void PivotDown::Initialize() {
-	
+	Robot::containerElevator->clawPivot->Set(0.25);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void PivotDown::Execute() {
-	RobotMap::containerElevatorclawPivot->Set(-0.25);
+
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool PivotDown::IsFinished() {
-	if(RobotMap::containerElevatorpivotPot->GetValue()>PIVOT_LOW_LIMIT) { //TODO Set actual lower limit
-		return false;
-	}
-	else {
+	if(Robot::containerElevator->pivotPot->GetValue()>=kPIVOT_LOW_LIMIT)
+	{
+		Robot::containerElevator->clawPivot->Set(0);
 		return true;
+	}else{
+		return false;
 	}
 }
 

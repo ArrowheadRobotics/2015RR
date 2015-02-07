@@ -29,8 +29,8 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-private:
-	int initPot;
+//private:
+//	int initPot;
 };
 
 #endif
