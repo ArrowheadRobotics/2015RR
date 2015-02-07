@@ -38,8 +38,16 @@ bool ContainerUp::IsFinished() {
 //		return true;
 //	}
 //	else {
-		return false; //Otherwise, keep going
+		// return false; //Otherwise, keep going
 //	}
+
+	if (!(Robot::containerElevator->limitTop->Get())) {
+		Robot::containerElevator->clawElevator->Set(0);
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 // Called once after isFinished returns true

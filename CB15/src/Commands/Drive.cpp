@@ -23,6 +23,8 @@ Drive::Drive() {
 void Drive::Initialize() {
 	// Call move function
 	Robot::chassis->Move(Robot::oi->getleftJoy(),Robot::oi->getrightJoy());
+	printf("Limit Top = %d  ", Robot::containerElevator->limitTop->Get());
+	printf("Limit Bottom = %d  ", Robot::containerElevator->limitBottom->Get());
 	printf("Pivot Pot: %d  Tote Pot: %d  Container Pot: %d\n",Robot::containerElevator->pivotPot->GetValue(),Robot::toteElevator->totePot->GetValue(),Robot::containerElevator->elevatePot->GetValue());
 }
 

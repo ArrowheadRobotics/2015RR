@@ -39,8 +39,16 @@ bool ContainerDown::IsFinished() {
 		//return true;
 	//}
 	//else {
-		return false; //Otherwise, keep going
+		//return false; //Otherwise, keep going
 	//}
+
+	if (!(Robot::containerElevator->limitBottom->Get())) {
+		Robot::containerElevator->clawElevator->Set(0);
+		return true;
+	}
+	else {
+		return false;
+	}
 }
 
 // Called once after isFinished returns true

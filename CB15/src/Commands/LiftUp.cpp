@@ -26,7 +26,7 @@ void LiftUp::Initialize() {
 //	initPot = RobotMap::toteElevatortotePot->GetValue(); //Store the initial pot value
 //	Robot::toteElevator->setpoint+=kPOT_LIFT_DIFFERENCE;
 	printf("toteDown\n");
-	Robot::toteElevator->toteDrive->Set(0.6f);
+	Robot::toteElevator->toteDrive->Set(0.95f);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -37,11 +37,11 @@ void LiftUp::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool LiftUp::IsFinished() {
-	if(Robot::toteElevator->totePot->GetValue()<=kTOTETOP)
-	{
+	if (Robot::toteElevator->totePot->GetValue()<=kTOTETOP) {
 		Robot::toteElevator->toteDrive->Set(0);
 		return true;
-	}else{
+	}
+	else {
 		return false;
 	}
 }

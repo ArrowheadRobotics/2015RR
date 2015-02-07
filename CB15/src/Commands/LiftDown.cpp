@@ -32,16 +32,16 @@ void LiftDown::Execute() {
 //	RobotMap::toteElevatortoteDrive->Set(-0.25); //Drive the motor backwards
 //	Robot::toteElevator->PIDLiftControl();
 	printf("liftDown\n");
-	Robot::toteElevator->toteDrive->Set(-0.6f);
+	Robot::toteElevator->toteDrive->Set(-0.95f);
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool LiftDown::IsFinished() {
-	if(Robot::toteElevator->totePot->GetValue()>=kTOTEBOTTOM)
-	{
+	if (Robot::toteElevator->totePot->GetValue()>=kTOTEBOTTOM) {
 		Robot::toteElevator->toteDrive->Set(0);
 		return true;
-	}else{
+	}
+	else {
 		return false;
 	}
 }
