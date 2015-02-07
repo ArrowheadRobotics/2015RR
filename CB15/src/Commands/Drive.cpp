@@ -23,7 +23,7 @@ Drive::Drive() {
 void Drive::Initialize() {
 	// Call move function
 	Robot::chassis->Move(Robot::oi->getleftJoy(),Robot::oi->getrightJoy());
-	printf("Pivot Pot Val: %d\n",Robot::containerElevator->pivotPot->GetValue());
+	printf("Pivot Pot: %d  Tote Pot: %d  Container Pot: %d\n",Robot::containerElevator->pivotPot->GetValue(),Robot::toteElevator->totePot->GetValue(),Robot::containerElevator->elevatePot->GetValue());
 }
 
 // Called repeatedly when this Command is scheduled to run

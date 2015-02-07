@@ -88,10 +88,10 @@ void Chassis::Move(Joystick* leftJoy, Joystick* rightJoy) {
 		stoppedRight = t.Get(); //Sets stoppedRight to time from timer t
 	}
 
-	xPos = (leftJoy->GetX() + (accelval * xStep))/(accelval + 1); //Finds average of the previous cycle's speed and joystick's location with weight on the previous speed
+	xPos = ((leftJoy->GetX() + rightJoy->GetX())/2 + (accelval * xStep))/(accelval + 1); //Finds average of the previous cycle's speed and joystick's location with weight on the previous speed
 	xStep = xPos; //Sets last cycle's speed to desired position
-	if(abs((leftJoy->GetX())-xPos)<.5 && (t.Get() - stoppedSide) > .25)  {//Makes sure the last cycle hits joystick's position when it gets close
-		xStep = leftJoy->GetX(); //Sets last cycle's speed to joystick's location
+	if(abs(((leftJoy->GetX())+rightJoy->GetX())/2-xPos)<.5 && (t.Get() - stoppedSide) > .25)  {//Makes sure the last cycle hits joystick's position when it gets close
+		xStep = (leftJoy->GetX()+rightJoy->GetX())/2; //Sets last cycle's speed to joystick's location
 		stoppedSide = t.Get(); //Set's stoppedSide to time from timer t
 	}
 

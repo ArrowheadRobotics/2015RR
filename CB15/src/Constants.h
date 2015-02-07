@@ -11,6 +11,8 @@
 #define kTOTE_ELEVATOR_KD 0 //Derivative constant
 #define kTOTE_ELEVATOR_DT 50 //Change in time (milliseconds)
 #define kDEFAULT_SETPOINT 50 //TODO Pick a value for this
+#define kTOTETOP 1700
+#define kTOTEBOTTOM 3300
 
 
 //PORTS
@@ -47,7 +49,7 @@
 
 #define pElevatorPivotPot 0
 #define pElevatorHeightPot 2
-//TODO Enter correct values for these constants
+//Enter correct values for these constants
 #define pStrafeSolenoidA 0
 #define pStrafeSolenoidB 1
 

@@ -24,31 +24,32 @@ ContainerDown::ContainerDown() {
 
 // Called just before this Command runs the first time
 void ContainerDown::Initialize() {
-	initPot = RobotMap::containerElevatorelevatePot->GetValue(); //Stores the starting pot value
+	//initPot = RobotMap::containerElevatorelevatePot->GetValue(); //Stores the starting pot value
+	Robot::containerElevator->clawElevator->Set(-1.0f);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void ContainerDown::Execute() {
-	RobotMap::containerElevatorclawElevator->Set(-0.25); //Drive the motor backwards
+	//RobotMap::containerElevatorclawElevator->Set(-0.25); //Drive the motor backwards
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool ContainerDown::IsFinished() {
-	if(RobotMap::containerElevatorlimitBottom->Get()||initPot-RobotMap::containerElevatorelevatePot->GetValue()>kPOT_LIFT_DIFFERENCE) { //If the lift hits the bottom or has gone the length of a tote, stop
-		return true;
-	}
-	else {
+	//if(RobotMap::containerElevatorlimitBottom->Get()||initPot-RobotMap::containerElevatorelevatePot->GetValue()>kPOT_LIFT_DIFFERENCE) { //If the lift hits the bottom or has gone the length of a tote, stop
+		//return true;
+	//}
+	//else {
 		return false; //Otherwise, keep going
-	}
+	//}
 }
 
 // Called once after isFinished returns true
 void ContainerDown::End() {
-	RobotMap::containerElevatorclawElevator->Set(0); //Stop the motor when the command ends
+	Robot::containerElevator->clawElevator->Set(0); //Stop the motor when the command ends
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ContainerDown::Interrupted() {
-	RobotMap::containerElevatorclawElevator->Set(0);
+	Robot::containerElevator->clawElevator->Set(0);
 }
