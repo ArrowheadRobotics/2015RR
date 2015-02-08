@@ -42,6 +42,7 @@ public:
 	JoystickButton* setpointBtn;
 	JoystickButton* pivotNoodleBtn;
 	JoystickButton* strafeBtn;
+	JoystickButton* noodleBtn;
 };
 
 #endif

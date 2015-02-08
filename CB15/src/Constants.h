@@ -3,8 +3,8 @@
 
 //OTHER
 #define kPOT_LIFT_DIFFERENCE 200 //TODO Find actual difference in pot value when raising things by the height of one tote
-#define kPIVOT_HIGH_LIMIT 930 //TODO Find actual limit on the pivot
-#define kPIVOT_LOW_LIMIT 2330 //TODO Find actual limit on the pivot
+#define kPIVOT_HIGH_LIMIT 900 //TODO Find actual limit on the pivot
+#define kPIVOT_LOW_LIMIT 2300 //TODO Find actual limit on the pivot
 //Tote Elevator PID loop: TODO Tune the PID loop
 #define kTOTE_ELEVATOR_KP 0 //Proportional constant
 #define kTOTE_ELEVATOR_KI 0 //Integral constant
@@ -14,6 +14,24 @@
 #define kTOTETOP 1700
 #define kTOTEBOTTOM 3500
 
+#define kNOODLEANGLE 1565.0f
+#define kNOODLEHEIGHT 1834.0f
+
+
+/*Bottom - 3500
+ *
+ * Set1 - 3400
+ * Set2 - 3050
+ * Set3 - 2670
+ * Set4 - 2305
+ * Set5 - 1940
+ *
+ * Top - 1700
+ */
+
+
+//Noodle Angle - 1565
+//Noodle Height - 2434
 
 //PORTS
 #define pLeftDrive 0
