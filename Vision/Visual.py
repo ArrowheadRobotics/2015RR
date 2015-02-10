@@ -1,6 +1,12 @@
 import rr
 import math
 
+def getEdge():
+	try:
+		return (getCoorX(0) + getCoorX(3)) / 2
+	except EnviornmentError:
+		return
+
 def getMidpoint(x, y):
 	try:
 		return (x + y)/2
@@ -52,6 +58,12 @@ def getCoor(x, y): # Get coordinates of a point
 #############################################################################
 # ***********EVERYTHING BELOW (EXCLUDING main()) IS FOR ROBOREALM***********#
 #############################################################################
+	
+def setEdge():
+	try:
+		return rr.SetVariable("Edge", getEdge())
+	except SystemError:
+		return
 		
 def setMidpoint(): # Create variable name "MIDPOINT" for roborealm
 	try:
@@ -141,6 +153,7 @@ def main():
 	if len(rr.GetArrayVariable("MEP_COORDINATES")) == 16: # if only two blobs are on the screen
 		setTerms() # Set all variables
 		setAngle() #^
+		setEdge()
 		setMidpoint() #^
 		setGetDistance() #^
 		setGetDistLeft() #^

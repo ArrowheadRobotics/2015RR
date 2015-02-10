@@ -4,16 +4,16 @@
   <auto_exposure>FALSE</auto_exposure>
   <auto_white_balance>TRUE</auto_white_balance>
   <brightness_value>50</brightness_value>
-  <camera_type>1</camera_type>
+  <camera_type>2</camera_type>
   <color_level_value>50</color_level_value>
   <compression_index>5</compression_index>
   <contrast_value>50</contrast_value>
   <exposure_value>50</exposure_value>
   <ip_address>10.7.6.11</ip_address>
-  <is_active>TRUE</is_active>
+  <is_active>FALSE</is_active>
   <mirrot>FALSE</mirrot>
   <port>80</port>
-  <resolution>480x360</resolution>
+  <resolution>640x480</resolution>
   <sharpness_value>50</sharpness_value>
 </Axis_Internet_Camera>
 <RGB_Filter>
@@ -43,6 +43,12 @@
   <auto_reload>TRUE</auto_reload>
   <script>import rr
 import math
+
+def getEdge():
+	try:
+		return (getCoorX(0) + getCoorX(3)) / 2
+	except EnviornmentError:
+		return
 
 def getMidpoint(x, y):
 	try:
@@ -95,6 +101,12 @@ def getCoor(x, y): # Get coordinates of a point
 #############################################################################
 # ***********EVERYTHING BELOW (EXCLUDING main()) IS FOR ROBOREALM***********#
 #############################################################################
+	
+def setEdge():
+	try:
+		return rr.SetVariable("Edge", getEdge())
+	except SystemError:
+		return
 		
 def setMidpoint(): # Create variable name "MIDPOINT" for roborealm
 	try:
@@ -184,6 +196,7 @@ def main():
 	if len(rr.GetArrayVariable("MEP_COORDINATES")) == 16: # if only two blobs are on the screen
 		setTerms() # Set all variables
 		setAngle() #^
+		setEdge()
 		setMidpoint() #^
 		setGetDistance() #^
 		setGetDistLeft() #^
@@ -209,13 +222,15 @@ main()
   <display_as_annotation>FALSE</display_as_annotation>
   <display_value_only>TRUE</display_value_only>
   <font_color>purple</font_color>
-  <font_size>Large (12pt)</font_size>
+  <font_size>Huge (24pt)</font_size>
   <north>DISTANCE
 </north>
   <northeast>MIDPOINT
 </northeast>
   <northwest>ANGLE
 </northwest>
+  <south>Edge
+</south>
 </Display_Variables>
 <NetworkTables>
   <delay>100</delay>
