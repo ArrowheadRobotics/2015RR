@@ -1,21 +1,27 @@
 import rr
 import math
 
+def getArea():
+	try:
+		return (findDiff(0,2) * findDiff(1,7))
+	except EnviornmentError:
+		return
+		
 def getEdge():
 	try:
-		return (getCoorX(0) + getCoorX(3)) / 2
+		return int((getCoorY(1) + getCoorY(7)) / 2)
 	except EnviornmentError:
 		return
 
 def getMidpoint(x, y):
 	try:
-		return (x + y)/2
+		return (x + y) / 2
 	except EnviornmentError:
 		return
 
 def getDist(px): # Get distance from camera to container
 	try:
-		return (2548/px)
+		return int((2548/px) * 2.15)
 	except ZeroDivisionError: # catch if px is 0
 		return 
 		
@@ -59,6 +65,12 @@ def getCoor(x, y): # Get coordinates of a point
 # ***********EVERYTHING BELOW (EXCLUDING main()) IS FOR ROBOREALM***********#
 #############################################################################
 	
+def setArea():
+	try:
+		return rr.SetVariable("Area", getArea())
+	except SystemError:
+		return
+		
 def setEdge():
 	try:
 		return rr.SetVariable("Edge", getEdge())
@@ -151,9 +163,13 @@ def setTerms(): # Create "TERMS" variable for roborealm
 
 def main():
 	if len(rr.GetArrayVariable("MEP_COORDINATES")) == 16: # if only two blobs are on the screen
+		#if getDist(findDiff(getCoorY(1), getCoorY(7))) < 50:
+		#	rr.CameraOff()
+		#	rr.CameraOn()
 		setTerms() # Set all variables
 		setAngle() #^
 		setEdge()
+		setArea()
 		setMidpoint() #^
 		setGetDistance() #^
 		setGetDistLeft() #^
@@ -168,4 +184,3 @@ def main():
 		setCoorRightFour() #^
 		
 main()
-
