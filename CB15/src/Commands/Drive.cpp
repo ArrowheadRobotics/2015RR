@@ -10,6 +10,7 @@
 
 
 #include "Drive.h"
+#include "../Constants.h"
 
 Drive::Drive() {
 	// Use requires() here to declare subsystem dependencies
@@ -23,11 +24,25 @@ Drive::Drive() {
 void Drive::Initialize() {
 	// Call move function
 	Robot::chassis->Move(Robot::oi->getleftJoy(),Robot::oi->getrightJoy());
-	printf("Limit Top = %d  ", Robot::containerElevator->limitTop->Get());
-	printf("Limit Bottom = %d  ", Robot::containerElevator->limitBottom->Get());
-	printf("Pivot Pot: %d  Tote Pot: %d  Container Pot: %d\n",Robot::containerElevator->pivotPot->GetValue(),Robot::toteElevator->totePot->GetValue(),Robot::containerElevator->elevatePot->GetValue());
-
-	Robot::toteElevator->toteDrive->Set(-1*Robot::oi->getgamePad()->GetAxis(Robot::oi->getgamePad()->kYAxis));
+	//printf("JoyVal: %f\n",Robot::oi->getleftJoy()->GetZ());
+	//printf("SpdVal: = %f  ", Robot::toteElevator->spdVal);
+	//printf("Limit Bottom = %d  ", Robot::containerElevator->limitBottom->Get());
+	//printf("Pivot Pot: %d  Tote Pot: %d  Container Pot: %d\n",Robot::containerElevator->pivotPot->GetValue(),Robot::toteElevator->totePot->GetValue(),Robot::containerElevator->elevatePot->GetValue());
+	if((Robot::toteElevator->totePot->GetValue()>kTOTEBOTTOM) && (Robot::oi->getgamePad()->GetAxis(Robot::oi->getgamePad()->kYAxis)>0))
+	{
+		Robot::toteElevator->toteDrive->Set(Robot::toteElevator->spdVal);
+		//printf("Bottom\n");
+	}
+	else if((Robot::toteElevator->totePot->GetValue()<kTOTETOP) && (Robot::oi->getgamePad()->GetAxis(Robot::oi->getgamePad()->kYAxis)<0))
+	{
+		Robot::toteElevator->toteDrive->Set(Robot::toteElevator->spdVal);
+		//printf("Top\n");
+	}
+	else
+	{
+		Robot::toteElevator->toteDrive->Set(-1*Robot::oi->getgamePad()->GetAxis(Robot::oi->getgamePad()->kYAxis)+Robot::toteElevator->spdVal);
+		//printf("Drive\n");
+	}
 }
 
 // Called repeatedly when this Command is scheduled to run

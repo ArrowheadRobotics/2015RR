@@ -30,8 +30,10 @@ void Noodle::Execute() {
 	if((Robot::containerElevator->elevatePot->GetValue()-kNOODLEHEIGHT)>20 || (Robot::containerElevator->elevatePot->GetValue()-kNOODLEHEIGHT)<-20)
 	{
 		Robot::containerElevator->clawElevator->Set(0.0015*(Robot::containerElevator->elevatePot->GetValue()-kNOODLEHEIGHT));
+	}else{
+		Robot::containerElevator->clawElevator->Set(0);
 	}
-	if((Robot::containerElevator->pivotPot->GetValue()-kNOODLEANGLE)>100 || (Robot::containerElevator->pivotPot->GetValue()-kNOODLEANGLE)<-100)
+	if((Robot::containerElevator->pivotPot->GetValue()-kNOODLEANGLE)>20 || (Robot::containerElevator->pivotPot->GetValue()-kNOODLEANGLE)<-20)
 	{
 		Robot::containerElevator->clawPivot->Set(-0.002*(Robot::containerElevator->pivotPot->GetValue()-kNOODLEANGLE));
 	}

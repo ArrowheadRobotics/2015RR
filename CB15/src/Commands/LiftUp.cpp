@@ -25,8 +25,9 @@ LiftUp::LiftUp() {
 void LiftUp::Initialize() {
 //	initPot = RobotMap::toteElevatortotePot->GetValue(); //Store the initial pot value
 //	Robot::toteElevator->setpoint+=kPOT_LIFT_DIFFERENCE;
-	printf("toteDown\n");
-	Robot::toteElevator->toteDrive->Set(0.95f);
+	//printf("toteDown\n");
+	//Robot::toteElevator->toteDrive->Set(0.95f);
+	Robot::toteElevator->point++;
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -37,22 +38,23 @@ void LiftUp::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool LiftUp::IsFinished() {
-	if (Robot::toteElevator->totePot->GetValue()<=kTOTETOP) {
-		Robot::toteElevator->toteDrive->Set(0);
-		return true;
-	}
-	else {
-		return false;
-	}
+//	if (Robot::toteElevator->totePot->GetValue()<=kTOTETOP) {
+//		Robot::toteElevator->toteDrive->Set(0);
+//		return true;
+//	}
+//	else {
+//		return false;
+//	}
+	return true;
 }
 
 // Called once after isFinished returns true
 void LiftUp::End() {
-	Robot::toteElevator->toteDrive->Set(0); //Stop the motor when the command ends
+//	Robot::toteElevator->toteDrive->Set(0); //Stop the motor when the command ends
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LiftUp::Interrupted() {
-	Robot::toteElevator->toteDrive->Set(0);
+//	Robot::toteElevator->toteDrive->Set(0);
 }

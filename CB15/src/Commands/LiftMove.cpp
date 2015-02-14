@@ -26,26 +26,23 @@ void LiftMove::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void LiftMove::Execute() {
-	Robot::toteElevator->PIDLiftControl();
-	Robot::toteElevator->limitBottom->Get();
-	if(((Robot::toteElevator->limitBottom->Get()) && (Robot::toteElevator->output < 0))  ||  ((Robot::toteElevator->limitTop->Get()) && (Robot::toteElevator->output > 0))) {
-		Robot::toteElevator->output=0;
-		Robot::toteElevator->setpoint=Robot::toteElevator->totePot->GetValue();
-	}
+	Robot::toteElevator->DriveSetPoint();
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool LiftMove::IsFinished() {
-	return false;
+	return true;
 }
 
 // Called once after isFinished returns true
 void LiftMove::End() {
-	
+	//Robot::toteElevator->toteDrive->Set(0);
+	//Robot::toteElevator->spdVal=0;
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void LiftMove::Interrupted() {
-
+	//Robot::toteElevator->toteDrive->Set(0);
+	//Robot::toteElevator->spdVal=0;
 }

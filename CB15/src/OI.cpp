@@ -31,6 +31,7 @@
 #include "Commands/SetpointReset.h"
 #include "Commands/StrafeAxisToggle.h"
 #include "Commands/Noodle.h"
+#include "Commands/LiftStop.h"
 
 OI::OI() {
 	// Process operator interface input here.
@@ -70,9 +71,13 @@ OI::OI() {
 
 	//Tote Elevator buttons
 	toteUpBtn = new JoystickButton(gamePad, BBUTTON);
-	toteUpBtn->WhileHeld(new LiftUp());
+	toteUpBtn->WhenPressed(new LiftUp());
+	toteUpBtn->WhileHeld(new LiftMove());
+	toteUpBtn->WhenReleased(new LiftStop());
 	toteDownBtn = new JoystickButton(gamePad, ABUTTON);
-	toteDownBtn->WhileHeld(new LiftDown());
+	toteDownBtn->WhenPressed(new LiftDown());
+	toteDownBtn->WhileHeld(new LiftMove());
+	toteDownBtn->WhenReleased(new LiftStop());
 	//Container Elevator buttons
 	clawBtn = new JoystickButton(gamePad, LEFTBUMPER);
 	clawBtn->WhenPressed(new ClawToggle());
@@ -87,8 +92,8 @@ OI::OI() {
 	//Lift Elevator Button:
 	setpointBtn = new JoystickButton(gamePad, YBUTTON);
 	setpointBtn->WhenPressed(new SetpointReset());
-	strafeBtn = new JoystickButton(leftJoy, 2);
-	strafeBtn->WhenPressed(new StrafeAxisToggle());
+	strafeBtn = new JoystickButton(leftJoy, 1);
+	strafeBtn->WhileHeld(new StrafeAxisToggle());
 
 	noodleBtn = new JoystickButton(gamePad, RIGHTBUMPER);
 	noodleBtn->WhileHeld(new Noodle());

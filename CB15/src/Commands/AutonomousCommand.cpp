@@ -10,6 +10,7 @@
 
 
 #include "AutonomousCommand.h"
+#include "../Robot.h"
 
 
 
@@ -22,6 +23,7 @@ AutonomousCommand::AutonomousCommand() {
 	counter = 0;
 	centerdistance=0;
 	startonleft=false;
+	autonMode=0;
 }
 
 // Called just before this Command runs the first time
@@ -29,12 +31,40 @@ void AutonomousCommand::Initialize() {
 	centerdistance=0;
 	startonleft=false;
 	counter=0;
+	autonMode=0;
+	if(4<0.5 && Robot::oi->getrightJoy()->GetZ()>0.5) {
+		autonMode=1;
+	}
+	if(Robot::oi->getleftJoy()->GetZ()>0.5 && Robot::oi->getrightJoy()->GetZ()<0.5) {
+		autonMode=2;
+	}
+	if(Robot::oi->getleftJoy()->GetZ()<0.5 && Robot::oi->getrightJoy()->GetZ()<0.5) {
+		autonMode=3;
+	}
+	printf("Auto Mode: %d\t Val: %f\n",autonMode);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void AutonomousCommand::Execute() {
 	centerdistance=	Robot::table->GetNumber("Midpoint",0);
 }
+
+// Make this return true when this Command no longer needs to run execute()
+bool AutonomousCommand::IsFinished() {
+	return false;
+}
+
+// Called once after isFinished returns true
+void AutonomousCommand::End() {
+
+}
+
+// Called when another command which requires one or more of the same
+// subsystems is scheduled to run
+void AutonomousCommand::Interrupted() {
+
+}
+
 
 void AutonomousCommand::GoForward() {
 	Robot::chassis->leftDrive->Set(1);
@@ -106,20 +136,4 @@ void AutonomousCommand::Center() {
 	} else {
 		Center();
 	}
-}
-
-// Make this return true when this Command no longer needs to run execute()
-bool AutonomousCommand::IsFinished() {
-	return false;
-}
-
-// Called once after isFinished returns true
-void AutonomousCommand::End() {
-	
-}
-
-// Called when another command which requires one or more of the same
-// subsystems is scheduled to run
-void AutonomousCommand::Interrupted() {
-
 }

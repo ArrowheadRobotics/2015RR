@@ -21,7 +21,7 @@ StrafeAxisToggle::StrafeAxisToggle() {
 
 // Called just before this Command runs the first time
 void StrafeAxisToggle::Initialize() {
-	Robot::chassis->ToggleStrafe();
+	Robot::chassis->strafeSol->Set(DoubleSolenoid::kForward);
 }
 
 // Called repeatedly when this Command is scheduled to run
@@ -31,16 +31,16 @@ void StrafeAxisToggle::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool StrafeAxisToggle::IsFinished() {
-	return true;
+	return false;
 }
 
 // Called once after isFinished returns true
 void StrafeAxisToggle::End() {
-	
+	Robot::chassis->strafeSol->Set(DoubleSolenoid::kReverse);
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void StrafeAxisToggle::Interrupted() {
-
+	Robot::chassis->strafeSol->Set(DoubleSolenoid::kReverse);
 }
