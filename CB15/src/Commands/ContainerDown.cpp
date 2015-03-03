@@ -25,7 +25,7 @@ ContainerDown::ContainerDown() {
 // Called just before this Command runs the first time
 void ContainerDown::Initialize() {
 	//initPot = RobotMap::containerElevatorelevatePot->GetValue(); //Stores the starting pot value
-	Robot::containerElevator->clawElevator->Set(-0.5f);
+	Robot::containerElevator->clawElevator->Set(-0.4f);
 }
 
 // Called repeatedly when this Command is scheduled to run

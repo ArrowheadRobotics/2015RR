@@ -29,17 +29,24 @@ public:
 	virtual bool IsFinished();
 	virtual void End();
 	virtual void Interrupted();
-	void Center();
-	void GoForward();
-	void GoBackward();
-	void StrafeLeft(int strafeamount);
-	void StrafeRight(int strafeamount);
-	void Angle();
+//	void Center();
+//	void GoForward();
+//	void GoBackward();
+//	void StrafeLeft(int strafeamount);
+//	void StrafeRight(int strafeamount);
+//	void Angle();
 	float centerdistance;
 	bool startonleft;
 	int counter;
 	int autonMode;
-
+	void mode0();
+	void mode1();
+	void mode2();
+	void mode3();
+	void mode4();
+	int step;
+	int offset;
+	int potZero;
 };
 
 #endif

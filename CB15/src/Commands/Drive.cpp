@@ -22,12 +22,16 @@ Drive::Drive() {
 
 // Called just before this Command runs the first time
 void Drive::Initialize() {
-	// Call move function
-	Robot::chassis->Move(Robot::oi->getleftJoy(),Robot::oi->getrightJoy());
+	// Call move function,
+	printf("xPos: %f  xVel: %f  xAcc: %f  ",Robot::chassis->px,Robot::chassis->vx,Robot::chassis->ax);
 	//printf("JoyVal: %f\n",Robot::oi->getleftJoy()->GetZ());
 	//printf("SpdVal: = %f  ", Robot::toteElevator->spdVal);
 	//printf("Limit Bottom = %d  ", Robot::containerElevator->limitBottom->Get());
-	//printf("Pivot Pot: %d  Tote Pot: %d  Container Pot: %d\n",Robot::containerElevator->pivotPot->GetValue(),Robot::toteElevator->totePot->GetValue(),Robot::containerElevator->elevatePot->GetValue());
+	printf("Pivot Pot: %d  Tote Pot: %d  Container Pot: %d\n",Robot::containerElevator->pivotPot->GetValue(),Robot::toteElevator->totePot->GetValue(),Robot::containerElevator->elevatePot->GetValue());
+	if (Robot::autoMode) {
+		return;
+	}
+	Robot::chassis->Move(Robot::oi->getleftJoy(),Robot::oi->getrightJoy());
 	if((Robot::toteElevator->totePot->GetValue()>kTOTEBOTTOM) && (Robot::oi->getgamePad()->GetAxis(Robot::oi->getgamePad()->kYAxis)>0))
 	{
 		Robot::toteElevator->toteDrive->Set(Robot::toteElevator->spdVal);

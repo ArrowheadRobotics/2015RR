@@ -43,6 +43,7 @@ public:
 	static DigitalInput* toteElevatorlimitTop;
 	static DigitalInput* toteElevatorlimitBottom;
 	static DoubleSolenoid* strafeAxisSol;
+	static BuiltInAccelerometer* accel;
 
 
 	static void init();

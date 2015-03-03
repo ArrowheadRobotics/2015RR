@@ -23,7 +23,7 @@ PivotUp::PivotUp() {
 
 // Called just before this Command runs the first time
 void PivotUp::Initialize() {
-	Robot::containerElevator->clawPivot->Set(-0.25);
+	Robot::containerElevator->clawPivot->Set(-0.50);
 }
 
 // Called repeatedly when this Command is scheduled to run

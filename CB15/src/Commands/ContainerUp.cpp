@@ -24,7 +24,7 @@ ContainerUp::ContainerUp() {
 // Called just before this Command runs the first time
 void ContainerUp::Initialize() {
 //	initPot = RobotMap::containerElevatorelevatePot->GetValue(); //Stores starting pot value
-	Robot::containerElevator->clawElevator->Set(0.5f);
+	Robot::containerElevator->clawElevator->Set(0.7f);
 }
 
 // Called repeatedly when this Command is scheduled to run

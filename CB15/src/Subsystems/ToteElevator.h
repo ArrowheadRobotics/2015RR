@@ -40,8 +40,8 @@ public:
 	DigitalInput* limitTop;
 	DigitalInput* limitBottom;
 
-	float setPoints[7] = {3500, 3400, 3100, 2750, 2305, 1940, 1700};
-
+	// float setPoints[7] = {3500, 3400, 3100, 2750, 2305, 1940, 1700};
+	float setPoints[6] = {3010, 2975 ,2570, 2185, 1775, 1400};
 	float spdVal;
 	int point;
 };

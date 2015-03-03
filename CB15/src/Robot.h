@@ -48,5 +48,6 @@ public:
 	virtual void TestPeriodic();
 	static float leftZVal;
 	static float rightZVal;
+	static bool autoMode;
 };
 #endif
